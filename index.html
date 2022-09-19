@@ -6,33 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Caculator</title>
   <link rel="stylesheet" type="text/css" href="./main.css">
+  <script scr="./main.js"></script>
 </head>
 
 <body>
   <!-- 버튼 기반 계산기 -->
+  <!-- 버튼 입력 시 input에 숫자, 연산 등이 입력되어 계산기 기능 구현 -->
   <div class="row">
-    <input class="input" type="text" value="123 + 80 = 203" disabled>
+    <input id="top-input" class="input" type="text" value="" disabled>
   </div>
   <div class="row">
-    <button class="btn">7</button>
-    <button class="btn">8</button>
-    <button class="btn">9</button>
+    <button class="btn" onclick="inputNum(7)">7</button>
+    <button class="btn" onclick="inputNum(8)">8</button>
+    <button class="btn" onclick="inputNum(9)">9</button>
     <button class="btn">=</button>
   </div>
   <div class="row">
-    <button class="btn">4</button>
-    <button class="btn">5</button>
-    <button class="btn">6</button>
+    <button class="btn" onclick="inputNum(4)">4</button>
+    <button class="btn" onclick="inputNum(5)">5</button>
+    <button class="btn" onclick="inputNum(6)">6</button>
     <button class="btn">+</button>
   </div>
   <div class="row">
-    <button class="btn">1</button>
-    <button class="btn">2</button>
-    <button class="btn">3</button>
+    <button class="btn" onclick="inputNum(1)">1</button>
+    <button class="btn" onclick="inputNum(2)">2</button>
+    <button class="btn" onclick="inputNum(3)">3</button>
     <button class="btn">-</button>
   </div>
   <div class="row">
-    <button class="btn btn-lg">0</button>
+    <button class="btn btn-lg" onclick="inputNum(0)">0</button>
     <button class="btn">/</button>
     <button class="btn">*</button>
   </div>
