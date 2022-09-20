@@ -5,7 +5,7 @@ let left = null,
 function inputNum(num) {
   if (oper === null) {
     if (left === null) {
-      left = `${num}`
+      left = `${num}` // num.toString()
     } else {
       if (num === 0 && parseInt(left) === 0)
         return;
