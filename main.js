@@ -1,7 +1,8 @@
 let left = null,
     right = null,
     oper = null,
-    res = false;
+    res = false,
+    resValue = null;
 
 function save() {
     const inp = document.getElementById("top-input");
@@ -23,23 +24,23 @@ function save() {
     inp.value = value // 결과값
 
     if (res) { // 참이면
-        let res = "";
+        // let resValue = "";
         switch (oper) { // 사칙연산
             case "+":
-                res = parseInt(left) + parseInt(right)
+                resValue = parseInt(left) + parseInt(right)
                 break;
             case "-":
-                res = parseInt(left) - parseInt(right)
+                resValue = parseInt(left) - parseInt(right)
                 break;
             case "*":
-                res = parseInt(left) * parseInt(right)
+                resValue = parseInt(left) * parseInt(right)
                 break;
             case "/":
-                res = parseInt(left) / parseInt(right)
+                resValue = parseInt(left) / parseInt(right)
                 break;
         }
 
-        value += `= ` + res;
+        value += `= ` + resValue;
         inp.value = value // 결과값
     }
 }
@@ -89,5 +90,23 @@ function inputOper(op) {
     }
     // null이 아니면 연산자에 담아준다
     oper = op;
+    save();
+}
+
+function inputEqu() {
+    // 결과값 res를 도출하기 위해 사칙연산 부분의 res를 전역변수로 변경 (resValue)
+    // =을 누르면 결과값 계산
+    // 계산된 상태에서 =을 한번 더 누르면 계산식과 연산자는 모두 초기화 후 resValue만 보여줌
+    if(res) {
+        left = resValue
+        right = null
+        resValue = null
+        oper = null
+        res = false
+    }
+    // 결과값 res는 true, save 호출
+    else {
+        res = true
+    }
     save();
 }
