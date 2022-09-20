@@ -5,7 +5,7 @@ let left = null,
 
 function save() {
     const inp = document.getElementById("top-input");
-    const value = ""
+    let value = ""
 
     if (left === null)
         return;
@@ -67,4 +67,27 @@ function inputNum(num) {
         }
     }
     save(); // input한다음 save 호출, 바로 대응
+}
+
+// 연산자의 경우, null일 때는 input이 안되어야 함
+function inputOper(op) {
+    // 음수일 경우 (parseInt 시 음수로 표시)
+    if(left === null && op === "-") {
+        left = "-"
+        save();
+        return;
+    }
+    // left가 null은 아닌데 마이너스일 경우
+    if(left === "-" && op === "-") {
+        return;
+    }
+    // 연산자가 마이너스인데 기존의 값이 존재하고(null이 아닐 때) right가 null이면
+    if(op === "-" && op !== null && right === null) {
+        right = "-"
+        save();
+        return;
+    }
+    // null이 아니면 연산자에 담아준다
+    oper = op;
+    save();
 }
